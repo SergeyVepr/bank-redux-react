@@ -10,3 +10,4 @@ export const withdraw = sum => ({
     type: WITHDRAW,
     payload: sum
 });
+
