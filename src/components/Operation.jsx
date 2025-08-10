@@ -1,21 +1,12 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {deposit, withdraw} from "../actions/accountAction.js";
 import {useDispatch} from "react-redux";
-import {fetchQuote} from "../actions/queteAction.js";
 
 const Operation = () => {
     const [sum, setSum] = useState(0);
     const dispatch = useDispatch();
 
-    useEffect(() => {
 
-        const interval = setInterval(() => {
-            dispatch(fetchQuote());
-        }, 5000)
-
-        return () => clearInterval(interval)
-
-    },[] )
 
     return (
         <>

@@ -1,8 +1,21 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {fetchQuote} from "../actions/queteAction.js";
 
 const Balance = () => {
     const balance = useSelector(store => store.balance);
     const quote = useSelector(store => store.quote);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+
+        const interval = setInterval(() => {
+            dispatch(fetchQuote());
+        }, 5000)
+
+        return () => clearInterval(interval)
+
+    },[] )
 
 
     return (

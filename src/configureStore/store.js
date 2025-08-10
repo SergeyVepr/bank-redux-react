@@ -1,8 +1,8 @@
 
 import {accountReducer} from "../reducers/accountReducer.js";
 import {applyMiddleware, legacy_createStore} from "redux";
-import {loggerEnhancer} from "../enhancers/loggerEnhancer.js";
-import {thunkEnhancer} from "../enhancers/thunkEnhancer.js";
+import {thunk} from "redux-thunk";
+import logger from "redux-logger";
 
 const initialState = {
     balance: 0,
@@ -13,5 +13,5 @@ export const store =
     legacy_createStore(
         accountReducer,
         initialState,
-        applyMiddleware(thunkEnhancer,loggerEnhancer)
+        applyMiddleware(thunk,logger),
     );

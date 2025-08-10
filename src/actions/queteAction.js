@@ -7,7 +7,6 @@ export const putQuote = quote => ({
 
 export const fetchQuote = () => {
     return dispatch => {
-        dispatch(putQuote("pending..."));
         fetch('https://api.gameofthronesquotes.xyz/v1/random')
             .then(res => res.json())
             .then(data => dispatch(putQuote(data.sentence)))
