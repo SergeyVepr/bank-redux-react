@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {deposit, withdraw} from "../actions/accountAction.js";
+import {deposit, withdraw} from "../features/account/balanceSlice.js";
 import {useDispatch} from "react-redux";
 
 const Operation = () => {
@@ -22,12 +22,6 @@ const Operation = () => {
                 <button className={'ml-10 text-white duration-700 hover:border-b hover:text-amber-400'}
                         onClick={() => dispatch(deposit(sum))}>Deposit
                 </button>
-            </div>
-            <div>
-                {/*<button*/}
-                {/*    className={'mr-10 text-white duration-700 hover:border-b hover:text-amber-400 pt-5 '}*/}
-                {/*    onClick={fetchQuote}*/}
-                {/*>Get new Message</button>*/}
             </div>
         </>
 

@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {fetchQuote} from "../actions/queteAction.js";
+import {fetchQuote} from "../features/api/queteAction.js";
 
 const Balance = () => {
     const balance = useSelector(store => store.balance);
