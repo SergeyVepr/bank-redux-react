@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {fetchQuote} from "../features/api/queteAction.js";
 
 const Balance = () => {
-    const balance = useSelector(store => store.balance);
+    const balance = useSelector(store => store.balance.balance);
     const quote = useSelector(store => store.quote);
     const dispatch = useDispatch();
 
