@@ -10,10 +10,11 @@
 @layer base {
     body{
         @apply font-cinzel;
-        @apply bg-bank;
-        @apply bg-cover;
-        @apply bg-center;
-        @apply bg-no-repeat;
+        background-color: #fefaf6;
+        background-image:
+          radial-gradient(circle at top right, rgba(249, 115, 22, 0.08), transparent 60%),
+          linear-gradient(to bottom, #fff8f0, #fefaf6);
+        background-attachment: fixed;
         .no-spinner::-webkit-outer-spin-button,
         .no-spinner::-webkit-inner-spin-button {
             -webkit-appearance: none;

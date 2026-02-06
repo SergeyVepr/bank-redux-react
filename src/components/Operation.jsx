@@ -1,30 +1,62 @@
-import {useState} from "react";
-import {deposit, withdraw} from "../features/account/balanceSlice.js";
-import {useDispatch} from "react-redux";
+import { useState } from "react";
+import { deposit, withdraw } from "../features/account/balanceSlice.js";
+import { useDispatch } from "react-redux";
 
 const Operation = () => {
-    const [sum, setSum] = useState(0);
-    const dispatch = useDispatch();
+  const [sum, setSum] = useState(0);
+  const dispatch = useDispatch();
 
+  const handleChange = (e) => {
+    const value = Number(e.target.value);
+    setSum(Number.isNaN(value) ? 0 : value);
+  };
 
+  const handleWithdraw = () => {
+    if (!sum) return;
+    dispatch(withdraw(sum));
+    setSum(0);
+  };
 
-    return (
-        <>
-            <div>
-                <button className={' text-white duration-700 hover:border-b hover:text-amber-400 mr-10'}
-                        onClick={() => dispatch(withdraw(sum))}>Withdraw
-                </button>
-                <input
-                    className=" pr-10 pl-10 border-r-4 text-center border-b text-white no-spinner border-2 border-amber-950"
-                    type="number"
-                    onChange={e => setSum(+e.target.value)}
-                    value={sum}/>
-                <button className={'ml-10 text-white duration-700 hover:border-b hover:text-amber-400'}
-                        onClick={() => dispatch(deposit(sum))}>Deposit
-                </button>
-            </div>
-        </>
+  const handleDeposit = () => {
+    if (!sum) return;
+    dispatch(deposit(sum));
+    setSum(0);
+  };
 
-    )
-}
-export default Operation
+  return (
+    <section className="operation-card">
+      <h2 className="operation-title">Account Operations</h2>
+      <p className="operation-subtitle">
+        Enter an amount and choose what you want to do with your balance.
+      </p>
+
+      <div className="operation-controls">
+        <button
+          type="button"
+          className="operation-button operation-button--withdraw"
+          onClick={handleWithdraw}
+        >
+          Withdraw
+        </button>
+
+        <input
+          className="operation-input"
+          type="number"
+          min="0"
+          onChange={handleChange}
+          value={sum}
+        />
+
+        <button
+          type="button"
+          className="operation-button operation-button--deposit"
+          onClick={handleDeposit}
+        >
+          Deposit
+        </button>
+      </div>
+    </section>
+  );
+};
+
+export default Operation;
